@@ -1,9 +1,7 @@
 ---
-title: Hello Hexo
+title: Hexo常用命令
 tags: Hexo
 ---
-Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html).
-## Hexo 日常命令解析
 
 #### 创建新的页面或文章
 
@@ -15,7 +13,7 @@ $ hexo new "My New Post"
 $ hexo new [layout] <title> 
     #layout有三种默认布局:
         #page(be saved to the source) 新的页面
-        #post(be saved to the source/_posts) 新的文章
+        #post(be saved to the source/_posts) 新的文章（默认）
         #draft(be saved to the source/_drafts) 新的草稿
 ```
 注意：
