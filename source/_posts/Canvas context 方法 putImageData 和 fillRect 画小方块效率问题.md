@@ -1,12 +1,12 @@
 ---
-title: Canvas context 方法 putImageData 和 fillRect 画小方块效率问题
+title: Canvas方法putImageData和fillRect画小方块效率问题
 tags: [canvas]
 date: 2017-09-19 17:40:50
 ---
 
 ### 实验
 
-画12 x 12的小方块
+方法：分别用putImageData和fillRect画若干个12 x 12的小方块，比较执行耗时。
 
 ```javascript
 let canvas = document.getElementById("canvas")
@@ -29,32 +29,32 @@ for (let i = 0; i < 10000; i++) {
 }
 console.timeEnd()
 ```
-10次渲染结果：**putImageData 效率是 fillRect 的 3.3%**
+1. 10次渲染结果：**putImageData 效率是 fillRect 的 3.3%**
 
-| putImageData / ms | fillRect / ms | 
-| -------- | ----- |
-| 1.348       | 0.032     | 
-| 0.767        | 0.019     | 
-| 0.550       | 0.028     | 
-| 0.296        | 0.020      | 
+    | putImageData / ms | fillRect / ms | 
+    | -------- | ----- |
+    | 1.348       | 0.032     | 
+    | 0.767        | 0.019     | 
+    | 0.550       | 0.028     | 
+    | 0.296        | 0.020      | 
 
-1000次渲染结果：**putImageData 效率是 fillRect 的 4.4%**
+2. 1000次渲染结果：**putImageData 效率是 fillRect 的 4.4%**
 
-| putImageData / ms | fillRect / ms | 
-| -------- | ----- |
-| 40.8        | 1.99      | 
-| 23.7        | 0.95      | 
-| 20.0        | 0.94     | 
-| 19.8        | 0.81     | 
+    | putImageData / ms | fillRect / ms | 
+    | -------- | ----- |
+    | 40.8        | 1.99      | 
+    | 23.7        | 0.95      | 
+    | 20.0        | 0.94     | 
+    | 19.8        | 0.81     | 
 
-10000次渲染结果：**putImageData 效率是 fillRect 的 21%**
+3. 10000次渲染结果：**putImageData 效率是 fillRect 的 21%**
 
-| putImageData / ms | fillRect / ms | 
-| -------- | ----- |
-| 48        | 6      | 
-| 51        | 22      | 
-| 37        | 7     | 
-| 55        | 7     | 
+    | putImageData / ms | fillRect / ms | 
+    | -------- | ----- |
+    | 48        | 6      | 
+    | 51        | 22      | 
+    | 37        | 7     | 
+    | 55        | 7     | 
 
 > 100000次渲染结果： **putImageData 效率是 fillRect 的 124%**
 
