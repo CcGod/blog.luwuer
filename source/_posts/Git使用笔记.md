@@ -47,3 +47,20 @@ pick f7f3f6d commit message
 squash 310154e commit message 2
 squash a5f4a0d commit message 3
 ```
+
+## 日常提交前变基
+
+如果团队没有明确要求只能使用 `merge` 合并代码，那么推荐你的每一次提交都通过 `rebase` 确保自己的改动永远置于最后，让 assignee 在合并分支时尽可能少的遇到冲突，避免 merge request 被关闭。
+
+```bash
+# 1. before push
+git pull --rebase origin dev
+
+# 2. 解决冲突（如果有）
+
+# 3. 将修改添加到暂存区
+git add .
+
+# 4. 完成变基
+git rebase --continue
+```
