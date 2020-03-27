@@ -17,6 +17,26 @@ tags: git
         cf = config
     ```
 
+## 临时存储代码
+```bash
+# 把当前工作区暂存和未暂存代码缓存
+git stash
+
+# 查看缓存列表
+git stash list
+# stash@{0}: WIP ...
+# stash@{1}: WIP ...
+
+# 应用缓存
+git stash apply stash@{0}
+
+# 删除缓存
+git stash drop stash@{0}
+
+# 应用缓存并删除该条缓存
+git stash pop stash@{0}
+```
+
 ## 修改最后一次提交
 
 如果你发现上一次提交遗漏了某个文件，或者修改未完毕就提交了，总之是想要对上一次提交内容和提交信息做修改，那么就用 `commit` 的 `--amend` 选项吧。
@@ -50,15 +70,19 @@ squash a5f4a0d commit message 3
 
 ## 日常提交前变基
 
-如果团队没有明确要求只能使用 `merge` 合并代码，那么推荐你的每一次提交都通过 `rebase` 确保自己的改动永远置于最后，让 assignee 在合并分支时尽可能少的遇到冲突，避免 merge request 被关闭。
+如果团队没有明确要求只能使用 `merge` 合并代码，那么建议你的每一次 `push` 到远程仓库前，都通过 `rebase` 确保自己的改动永远置于最后，让 assignee 在合并分支时尽可能少的遇到冲突，避免 merge request 被关闭。
 
 ```bash
+# 0. 提交你的修改
+git add .
+git commit -m '<commit message>'
+
 # 1. before push
 git pull --rebase origin dev
 
 # 2. 解决冲突（如果有）
 
-# 3. 将修改添加到暂存区
+# 3. 将修改好的冲突添加到暂存区
 git add .
 
 # 4. 完成变基
