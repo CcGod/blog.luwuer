@@ -20,6 +20,10 @@ iptables -A INPUT -p tcp --dport 20 -j ACCEPT    #允许FTP服务的20端口
 iptables -A INPUT -j reject       #禁止其他未允许的规则访问
 iptables -A FORWARD -j REJECT     #禁止其他未允许的规则访问
 ```
+**2020/03/03 备注**
+如果使用 `iptables -A INPUT -p tcp --dport 80 -j ACCEPT` 命令开放端口后，在客户端还是不能通过 `tenet [ip] [port]` 的方式访问，那么可能是因为在这条命令前你执行过 `iptables -A FORWARD -j REJECT`，而新加的规则位于这条规则之后，所以不能访问。
+
+此时你可以通过 `-I` 来把规则插入到顶部： `iptables -I INPUT -p tcp --dport 80 -j ACCEPT` 。
 
 2. 屏蔽IP
 ```bash
